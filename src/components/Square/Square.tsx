@@ -11,9 +11,15 @@ interface Props {
 const Square: FC<Props> = (props) => {
     const squareStyles: CSSProperties = {};
     if (props.clicked) {
-        console.log(1222);
         squareStyles.pointerEvents = "none";
         squareStyles.opacity = "0";
+    }
+    if (props.clicked && props.hasItem) {
+        return (
+            <div className="ring">
+                <span>o</span>
+            </div>
+        );
     }
     return (
         <div

@@ -15,7 +15,6 @@ const App = () => {
         copySquares[index] = copySquare;
         setSquares(copySquares);
     };
-    // console.log(squares);
     return (
         <div className="container">
             <GameBoard squares={squares} hideSquare={hideSquare} />
