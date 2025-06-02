@@ -5,14 +5,22 @@ import type { FC } from "react";
 
 interface Props {
     squares: TSquare[];
+    hideSquare: (id: string) => void;
 }
 
 const GameBoard: FC<Props> = (props) => {
-    console.log(props);
     return (
         <div className="gameBoard">
             {props.squares.map((square) => {
-                return <Square key={`${square.id}`} />;
+                return (
+                    <Square
+                        key={`${square.id}`}
+                        id={square.id}
+                        hasItem={square.hasItem}
+                        clicked={square.clicked}
+                        onHideSquare={() => props.hideSquare(square.id)}
+                    />
+                );
             })}
         </div>
     );

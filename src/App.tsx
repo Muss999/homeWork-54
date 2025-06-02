@@ -6,9 +6,19 @@ import GameBoard from "./components/GameBoard/GameBoard.tsx";
 
 const App = () => {
     const [squares, setSquares] = useState<TSquare[]>(makeSquares());
+
+    const hideSquare = (id: string) => {
+        const copySquares = [...squares];
+        const index = copySquares.findIndex((square) => square.id === id);
+        const copySquare = { ...copySquares[index] };
+        copySquare.clicked = true;
+        copySquares[index] = copySquare;
+        setSquares(copySquares);
+    };
+    // console.log(squares);
     return (
         <div className="container">
-            <GameBoard squares={squares} />
+            <GameBoard squares={squares} hideSquare={hideSquare} />
         </div>
     );
 };
