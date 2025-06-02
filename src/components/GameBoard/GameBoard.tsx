@@ -1,16 +1,17 @@
 import type { TSquare } from "../../types";
 import Square from "../Square/Square";
 import "./GameBoard.css";
-import type { FC } from "react";
+import type { CSSProperties, FC } from "react";
 
 interface Props {
     squares: TSquare[];
+    gameBoardStyles: CSSProperties;
     hideSquare: (id: string) => void;
 }
 
 const GameBoard: FC<Props> = (props) => {
     return (
-        <div className="gameBoard">
+        <div className="gameBoard" style={props.gameBoardStyles}>
             {props.squares.map((square) => {
                 return (
                     <Square
