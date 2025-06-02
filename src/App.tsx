@@ -4,6 +4,7 @@ import type { TSquare } from "./types";
 import { makeSquares } from "./functions.ts";
 import GameBoard from "./components/GameBoard/GameBoard.tsx";
 import Attempts from "./components/Attempts/Attempts.tsx";
+import ResetButton from "./components/ResetButton/ResetButton.tsx";
 
 let attempts: number = 0;
 const App = () => {
@@ -18,11 +19,19 @@ const App = () => {
         copySquares[index] = copySquare;
         setSquares(copySquares);
     };
-    console.log(attempts);
+
+    const resetGame = () => {
+        attempts = 0;
+        const newSquares = makeSquares();
+        setSquares(newSquares);
+    };
     return (
         <div className="container">
-            <GameBoard squares={squares} hideSquare={hideSquare} />
-            <Attempts attempts={attempts} />
+            <div className="gameForm">
+                <GameBoard squares={squares} hideSquare={hideSquare} />
+                <Attempts attempts={attempts} />
+                <ResetButton resetGame={resetGame} />
+            </div>
         </div>
     );
 };
